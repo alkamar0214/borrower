@@ -35,7 +35,7 @@ class _LoginState extends State<Login> {
 
   login() async {
     final response = await http
-        .post("http://192.168.1.83/LAB-System/api/api_verification.php", body: {
+        .post("http://192.168.1.83/UZ-LAB-Management/api/api_verification.php", body: {
       "flag": 1.toString(),
       "email": email,
       "password": password,
@@ -318,7 +318,7 @@ class _RegisterState extends State<Register> {
 
   save() async {
     final response = await http
-        .post("http://192.168.1.83/LAB-System/api/api_verification.php", body: {
+        .post("http://192.168.1.83/UZ-LAB-Management/api/api_verification.php", body: {
       "flag": 2.toString(),
       "name": name,
       "email": email,

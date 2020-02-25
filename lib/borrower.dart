@@ -57,7 +57,7 @@ class TransfterDataWidget extends State {
   Future<Null> listarClientes() async {
     var respuesta;
     final response = await http.post(
-        "http://192.168.1.83/LAB-System/api/ajax/cliente.php?op=ListarCliente",
+        "http://192.168.1.83/UZ-LAB-Management/api/ajax/cliente.php?op=ListarCliente",
         body: {});
     setState(() {
       respuesta = json.decode(response.body);
@@ -183,7 +183,7 @@ class TransfterDataWidget extends State {
   Future<String> guardarReserva() async {
     var respuesta;
     final response = await http.post(
-        "http://192.168.1.83/LAB-System/api/ajax/cliente.php?op=guardarReserva",
+        "http://192.168.1.83/UZ-LAB-Management/api/ajax/cliente.php?op=guardarReserva",
         body: {
           "nombre": _dropdownValue,
           "motivo": txtNota.text,
@@ -459,9 +459,9 @@ class TransfterDataWidget extends State {
                       borderRadius: new BorderRadius.circular(25.0))),
             ),
 
-              Padding(
-              padding: EdgeInsets.only(top: 20, left: 100.0),
-            ),
+             Padding(
+              padding: EdgeInsets.only(top: 10, left: 20.0),
+            ), 
             TextFormField(
               controller: txtNota6,
               keyboardType: TextInputType.text,
@@ -804,7 +804,7 @@ class TransfterDataWidget extends State {
                       // webCall();
                       guardarReserva();
                     } else {
-                       callToast("Failed");
+                       callToast1("Please Fillout Required fields");
                       print('form not validated');
                     }
                   },
@@ -834,9 +834,21 @@ class TransfterDataWidget extends State {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIos: 1,
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.blue,
         textColor: Colors.white,
         fontSize: 16.0);
+        
+  }
+  callToast1(String msg) {
+    Fluttertoast.showToast(
+        msg: "$msg",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
+        
   }
   
 }
