@@ -12,8 +12,7 @@ class Loading extends StatefulWidget {
   _LoadingState createState() => _LoadingState();
 }
 
-class _LoadingState extends State<Loading>
-    with SingleTickerProviderStateMixin {
+class _LoadingState extends State<Loading> with SingleTickerProviderStateMixin {
   Animation<double> animation_rotation;
   Animation<double> animation_radius_in;
   Animation<double> animation_radius_out;
@@ -92,7 +91,7 @@ class _LoadingState extends State<Loading>
                     offset: Offset(0.0, 0.0),
                     child: Dot(
                       radius: radius,
-                      color: Colors.black12,
+                      color: Colors.white,
                     ),
                   ),
                   new Transform.translate(
@@ -186,16 +185,19 @@ class _LoadingState extends State<Loading>
 
   @override
   void dispose() {
-
     controller.dispose();
     super.dispose();
   }
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<Animation<double>>('animation_rotation', animation_rotation));
-    properties.add(DiagnosticsProperty<Animation<double>>('animation_radius_in', animation_radius_in));
-    properties.add(DiagnosticsProperty<Animation<double>>('animation_radius_in', animation_radius_in));
+    properties.add(DiagnosticsProperty<Animation<double>>(
+        'animation_rotation', animation_rotation));
+    properties.add(DiagnosticsProperty<Animation<double>>(
+        'animation_radius_in', animation_radius_in));
+    properties.add(DiagnosticsProperty<Animation<double>>(
+        'animation_radius_in', animation_radius_in));
   }
 }
 
@@ -212,7 +214,6 @@ class Dot extends StatelessWidget {
         width: radius,
         height: radius,
         decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-
       ),
     );
   }

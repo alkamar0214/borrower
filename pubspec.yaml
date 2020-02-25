@@ -50,6 +50,13 @@ flutter:
   assets:
    - assets/uz-lab-logo-2.png
    - assets/uz-lab-logo.png
+   - assets/undraw_fill_forms.png
+   - assets/undraw_Login.png
+   - assets/undraw_mobile_login.png
+   - assets/undraw_science.png
+   - assets/undraw_sign_in.png
+   - assets/undraw_swipe.png
+   - assets/undraw_welcome.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

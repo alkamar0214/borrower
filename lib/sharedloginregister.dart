@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -37,7 +35,7 @@ class _LoginState extends State<Login> {
 
   login() async {
     final response = await http
-        .post("http://192.168.1.10/LAB-System/api/api_verification.php", body: {
+        .post("http://192.168.1.83/LAB-System/api/api_verification.php", body: {
       "flag": 1.toString(),
       "email": email,
       "password": password,
@@ -71,7 +69,7 @@ class _LoginState extends State<Login> {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIos: 1,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.blue,
         textColor: Colors.white);
   }
 
@@ -122,7 +120,7 @@ class _LoginState extends State<Login> {
     switch (_loginStatus) {
       case LoginStatus.notSignIn:
         return Scaffold(
-          backgroundColor: Colors.greenAccent,
+          backgroundColor: Colors.green,
           body: Center(
             child: ListView(
               shrinkWrap: true,
@@ -132,13 +130,13 @@ class _LoginState extends State<Login> {
                   child: Container(
                     padding: const EdgeInsets.all(8.0),
 //            color: Colors.grey.withAlpha(20),
-                    color: Colors.greenAccent,
+                    color: Colors.green,
                     child: Form(
                       key: _key,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                           Image.asset('assets/uz-lab-logo.png',width: 350), 
+                          Image.asset('assets/uz-lab-logo.png', width: 350),
                           SizedBox(
                             height: 30,
                           ),
@@ -147,7 +145,9 @@ class _LoginState extends State<Login> {
                             child: Text(
                               "Login",
                               style: TextStyle(
-                                  color: Colors.white, fontSize: 30.0,),
+                                color: Colors.white,
+                                fontSize: 30.0,
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -234,44 +234,42 @@ class _LoginState extends State<Login> {
                           ),
 
                           new Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              SizedBox(
-                                height: 44.0,
-                                child: RaisedButton(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0)),
-                                    child: Text(
-                                      "Login",
-                                      style: TextStyle(fontSize: 18.0),
-                                    ),
-                                    textColor: Colors.white,
-                                    color: Colors.green[300],
-                                    onPressed: () {
-                                      check();
-                                    }),
-                              ),
-                              SizedBox(
-                                height: 44.0,
-                                child: RaisedButton(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0)),
-                                    child: Text(
-                                      "GoTo Register",
-                                      style: TextStyle(fontSize: 18.0),
-                                    ),
-                                    textColor: Colors.white,
-                                    color: Colors.green[300],
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Register()),
-                                      );
-                                    }),
-                              ),
+                              SizedBox(height: 44.0),
+                              Expanded(
+                                  child: new RaisedButton(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15.0)),
+                                      child: Text(
+                                        "Login",
+                                        style: TextStyle(fontSize: 18.0),
+                                      ),
+                                      textColor: Colors.white,
+                                      color: Colors.blue,
+                                      onPressed: () {
+                                        check();
+                                      })),
+                              SizedBox(height: 44.0),
+                              Expanded(
+                                  child: new RaisedButton(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15.0)),
+                                      child: Text(
+                                        "Register",
+                                        style: TextStyle(fontSize: 18.0),
+                                      ),
+                                      textColor: Colors.white,
+                                      color: Colors.blue,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Register()),
+                                        );
+                                      })),
                             ],
                           ),
                         ],
@@ -320,7 +318,7 @@ class _RegisterState extends State<Register> {
 
   save() async {
     final response = await http
-        .post("http://192.168.1.10/LAB-System/api/api_verification.php", body: {
+        .post("http://192.168.1.83/LAB-System/api/api_verification.php", body: {
       "flag": 2.toString(),
       "name": name,
       "email": email,
@@ -353,14 +351,14 @@ class _RegisterState extends State<Register> {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIos: 1,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.blue,
         textColor: Colors.white);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.greenAccent,
+      backgroundColor: Colors.green,
       body: Center(
         child: ListView(
           shrinkWrap: true,
@@ -369,13 +367,13 @@ class _RegisterState extends State<Register> {
             Center(
               child: Container(
                 padding: const EdgeInsets.all(8.0),
-                color: Colors.greenAccent,
+                color: Colors.green,
                 child: Form(
                   key: _key,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                       Image.asset('assets/uz-lab-logo.png',width: 350), 
+                      Image.asset('assets/uz-lab-logo.png', width: 350),
                       SizedBox(
                         height: 40,
                       ),
@@ -458,7 +456,8 @@ class _RegisterState extends State<Register> {
                           decoration: InputDecoration(
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(left: 20, right: 15),
-                              child: Icon(Icons.confirmation_number, color: Colors.black),
+                              child: Icon(Icons.confirmation_number,
+                                  color: Colors.black),
                             ),
                             contentPadding: EdgeInsets.all(18),
                             labelText: "Student Number",
@@ -494,7 +493,6 @@ class _RegisterState extends State<Register> {
                               labelText: "Password"),
                         ),
                       ),
-                      
 
                       Padding(
                         padding: EdgeInsets.all(12.0),
@@ -513,7 +511,7 @@ class _RegisterState extends State<Register> {
                                   style: TextStyle(fontSize: 18.0),
                                 ),
                                 textColor: Colors.white,
-                                color: Colors.green[300],
+                                color: Colors.blue,
                                 onPressed: () {
                                   check();
                                 }),
@@ -523,13 +521,14 @@ class _RegisterState extends State<Register> {
                             child: RaisedButton(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15.0)),
-                                   child: Icon(Icons.arrow_back, color: Colors.white),
-                                // child: Text(
-                                //   "GoTo Login",
-                                //   style: TextStyle(fontSize: 18.0),
-                                // ),
+                                // child:
+                                // Icon(Icons.arrow_back, color: Colors.white),
+                                child: Text(
+                                  "GoTo Login",
+                                  style: TextStyle(fontSize: 18.0),
+                                ),
                                 textColor: Colors.white,
-                                color: Colors.green[300],
+                                color: Colors.blue,
                                 onPressed: () {
                                   Navigator.push(
                                     context,
@@ -566,7 +565,8 @@ class _MainMenuState extends State<MainMenu> {
     setState(() {
       widget.signOut();
     });
-  } 
+  }
+
   int currentIndex = 0;
   String selectedIndex = 'TAB: 0';
 
@@ -591,11 +591,12 @@ class _MainMenuState extends State<MainMenu> {
     super.initState();
     getPref();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.greenAccent,
+        backgroundColor: Colors.green,
         actions: <Widget>[
           IconButton(
             onPressed: () {
@@ -606,61 +607,74 @@ class _MainMenuState extends State<MainMenu> {
         ],
       ),
 
-
       // body: Center(
       //   child: Text(
       //     "WelCome",
       //     style: TextStyle(fontSize: 30.0, color: Colors.blue),
       //   ),
       // ),
-      body: new Center (
-      child: new Column (
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: new Center(
+          child: new Column(
         children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(top: 80.0),
+          ),
+          Image.asset('assets/undraw_science.png', width: 350),
           new Text('Press to start Borrowing'),
-          new RaisedButton(
-            child: new Text('Borrow'),
-            onPressed: ()
-            {
-              Navigator.of(context).pushNamed('/borrower');
-                  },
-            
-          ) 
+          Padding(
+            padding: EdgeInsets.only(bottom: 100.0),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+                  RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0)),
+                color: Colors.green,
+                child: Text(
+                  "BORROW",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.0,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/borrowers');
+                },
+              ),
+            ],
+          ),
         ],
-      )
-      ),
+      )),
 
-      bottomNavigationBar: BottomNavyBar(
-        backgroundColor: Colors.greenAccent,
-        iconSize: 30.0,
-//        iconSize: MediaQuery.of(context).size.height * .60,
-        currentIndex: currentIndex,
-        onItemSelected: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-          selectedIndex = 'TAB: $currentIndex';
-//            print(selectedIndex);
-          reds(selectedIndex);
-        }, 
-        items: [
-          BottomNavyBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Home'),
-              activeColor: Colors.white),
-          BottomNavyBarItem(
-              icon: Icon(Icons.view_list),
-              title: Text('List'),
-              activeColor: Colors.white),
-              
-              
-              
-          BottomNavyBarItem(
-              icon: Icon(Icons.person),
-              title: Text('Profile'),
-              activeColor: Colors.white),
-        ],
-      ),
+//       bottomNavigationBar: BottomNavyBar(
+//         backgroundColor: Colors.greenAccent,
+//         iconSize: 30.0,
+// //        iconSize: MediaQuery.of(context).size.height * .60,
+//         currentIndex: currentIndex,
+//         onItemSelected: (index) {
+//           setState(() {
+//             currentIndex = index;
+//           });
+//           selectedIndex = 'TAB: $currentIndex';
+// //            print(selectedIndex);
+//           reds(selectedIndex);
+//         },
+//         items: [
+//           BottomNavyBarItem(
+//               icon: Icon(Icons.home),
+//               title: Text('Home'),
+//               activeColor: Colors.white),
+//           BottomNavyBarItem(
+//               icon: Icon(Icons.view_list),
+//               title: Text('List'),
+//               activeColor: Colors.white),
+//           BottomNavyBarItem(
+//               icon: Icon(Icons.person),
+//               title: Text('Profile'),
+//               activeColor: Colors.white),
+//         ],
+//       ),
     );
   }
 
